@@ -21,6 +21,7 @@ const BackgroundContext = createContext<BackgroundContextType>({
   setBackgroundState: () => {},
 });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useBackground = () => useContext(BackgroundContext);
 
 export const BackgroundProvider: React.FC<{ children: ReactNode }> = ({ children }) => {

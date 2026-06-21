@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TiltCard } from './TiltCard';
 import { TitleReveal } from './TitleReveal';
+import { GlossaryWord } from './GlossaryWord';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +12,7 @@ const philosophers = [
   {
     id: 'marx',
     name: 'Karl Marx',
-    role: 'Giá Trị Thặng Dư',
+    role: <GlossaryWord id="surplus-value">Giá Trị Thặng Dư</GlossaryWord>,
     imageSrc: '/images/karl_marx.jpg',
     quote: 'Dữ liệu người dùng và sức lao động của shipper bị bóc lột để tạo ra giá trị khổng lồ cho nền tảng.'
   },
@@ -20,7 +21,7 @@ const philosophers = [
     name: 'Michel Foucault',
     role: 'Giám Sát Toàn Cảnh',
     imageSrc: '/images/foucault.jpg',
-    quote: 'Chúng ta sống trong một Panopticon kỹ thuật số, nơi mọi cú click đều bị theo dõi để thao túng hành vi.'
+    quote: <>Chúng ta sống trong một <GlossaryWord id="panopticon">Panopticon</GlossaryWord> kỹ thuật số, nơi mọi cú click đều bị theo dõi để thao túng hành vi.</>
   },
   {
     id: 'baudrillard',
@@ -154,8 +155,8 @@ export const PhilosophySection: React.FC = () => {
                 <div ref={adamCardRealRef} className="opacity-0 w-full h-full">
                   <TiltCard
                     name="Adam Smith"
-                    role="Bàn Tay Vô Hình"
-                    quote="Trong kinh tế số, thuật toán chính là bàn tay vô hình mới, tự động điều tiết và định hình thị trường."
+                    role={<GlossaryWord id="invisible-hand">Bàn Tay Vô Hình</GlossaryWord>}
+                    quote={<>Trong kinh tế số, thuật toán chính là <GlossaryWord id="invisible-hand">bàn tay vô hình</GlossaryWord> mới, tự động điều tiết và định hình thị trường.</>}
                     imageSrc="/images/adam_smith_2.jpg"
                   />
                 </div>

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GlossaryWord } from './GlossaryWord';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,7 +93,7 @@ export const SimulacraSection: React.FC = () => {
           <div className="max-w-2xl bg-black/60 backdrop-blur-md p-8 rounded-2xl border border-white/10">
             <h3 className="text-3xl font-bold text-white mb-4 text-orange-500">Jean Baudrillard</h3>
             <p className="text-stone-300 text-lg leading-relaxed mb-6">
-              Trong nền kinh tế số, chúng ta không còn tiêu thụ "giá trị sử dụng" của sản phẩm, mà tiêu thụ "giá trị ký hiệu" của chúng. Lượt Like, View, các phiên bản Limited Edition ảo... tạo ra một thực tại mô phỏng (Simulacra) hấp dẫn hơn cả đời thực.
+              Trong nền kinh tế số, chúng ta không còn tiêu thụ "giá trị sử dụng" của sản phẩm, mà tiêu thụ "giá trị ký hiệu" của chúng. Lượt Like, View, các phiên bản Limited Edition ảo... tạo ra một thực tại mô phỏng (<GlossaryWord id="simulacra">Simulacra</GlossaryWord>) hấp dẫn hơn cả đời thực.
             </p>
             <p className="text-stone-400 italic">"Sự thật đã bị xóa nhòa, chỉ còn lại những ký hiệu."</p>
           </div>

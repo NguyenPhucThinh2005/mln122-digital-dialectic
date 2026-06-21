@@ -8,33 +8,42 @@ import { SimulacraSection } from './components/SimulacraSection';
 import { DialecticLoopSection } from './components/DialecticLoopSection';
 import { NeuralBackground } from './components/NeuralBackground';
 import { PhilosophySection } from './components/PhilosophySection';
+import { DarkPatternsSection } from './components/DarkPatternsSection';
+import { StudentImplicationsSection } from './components/StudentImplicationsSection';
 
 import { useBackground } from './contexts/BackgroundContext';
+import { GlossaryProvider } from './contexts/GlossaryContext';
+import { GlossaryPopup } from './components/GlossaryPopup';
 
 function App() {
   const { color, speed, particleCount } = useBackground();
 
   return (
     <SmoothScroll>
-      <div className="relative bg-black text-stone-100 min-h-screen font-sans selection:bg-orange-500/30">
-        
-        {/* Background Neural Toàn Cục */}
-        <div className="fixed inset-0 z-0 pointer-events-auto">
-          <NeuralBackground color={color} particleCount={particleCount} speed={speed} trailOpacity={0.1} />
-        </div>
+      <GlossaryProvider>
+        <div className="relative bg-black text-stone-100 min-h-screen font-sans selection:bg-orange-500/30">
+          
+          {/* Background Neural Toàn Cục */}
+          <div className="fixed inset-0 z-0 pointer-events-auto">
+            <NeuralBackground color={color} particleCount={particleCount} speed={speed} trailOpacity={0.1} />
+          </div>
 
-        {/* Nội dung trang web */}
-        <div className="relative z-10">
-          <Hero />
-          <PhilosophySection />
-          <Section1 />
-          <Section2 />
-          <Section3 />
-          <SimulacraSection />
-          <DialecticLoopSection />
-          <Section4 />
+          {/* Nội dung trang web */}
+          <div className="relative z-10">
+            <Hero />
+            <PhilosophySection />
+            <Section1 />
+            <Section2 />
+            <Section3 />
+            <SimulacraSection />
+            <DialecticLoopSection />
+            <DarkPatternsSection />
+            <StudentImplicationsSection />
+            <Section4 />
+          </div>
+          <GlossaryPopup />
         </div>
-      </div>
+      </GlossaryProvider>
     </SmoothScroll>
   );
 }

@@ -21,7 +21,7 @@ export const Section2: React.FC = () => {
       trigger: container.current,
       start: "top center",
       end: "bottom center",
-      onEnter: () => setBackgroundState({ color: '#ea580c', speed: 1.2 }), // Orange Red Shopee
+      onUpdate: (self) => { if (self.isActive) setBackgroundState({ color: '#ea580c', speed: 1.2 }) },
       onLeaveBack: () => setBackgroundState({ color: '#f97316', speed: 0.8 }), // Normal Orange
     });
 
@@ -33,10 +33,10 @@ export const Section2: React.FC = () => {
       pin: leftText.current,
     });
 
-    const visuals = gsap.utils.toArray('.visual-card');
+    const visuals = gsap.utils.toArray<HTMLElement>('.visual-card');
     
     // Animate visuals appearing
-    visuals.forEach((visual: any) => {
+    visuals.forEach((visual: HTMLElement) => {
       gsap.fromTo(visual, 
         { opacity: 0, y: 100, scale: 0.9 },
         {

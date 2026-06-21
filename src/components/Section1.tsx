@@ -54,7 +54,7 @@ export const Section1: React.FC = () => {
       onUpdate: (self) => {
         // Chia quá trình cuộn thành 4 phần đều nhau
         const progress = self.progress;
-        let newIndex = 0;
+        let newIndex;
         if (progress < 0.25) newIndex = 0;
         else if (progress < 0.5) newIndex = 1;
         else if (progress < 0.75) newIndex = 2;

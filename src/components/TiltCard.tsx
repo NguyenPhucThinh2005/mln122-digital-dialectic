@@ -4,8 +4,8 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 interface TiltCardProps {
   imageSrc: string;
   name: string;
-  role: string;
-  quote: string;
+  role: React.ReactNode;
+  quote: React.ReactNode;
   className?: string;
 }
 

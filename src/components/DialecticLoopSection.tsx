@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Database, Crosshair, TrendingUp, RefreshCw, Zap, Link as LinkIcon, ArrowRight } from 'lucide-react';
+import { Database, Crosshair, TrendingUp, RefreshCw, Zap } from 'lucide-react';
 import { TitleReveal } from './TitleReveal';
+import { GlossaryWord } from './GlossaryWord';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +44,7 @@ const timelineData = [
   },
   {
     id: 4,
-    title: "Sự Tha Hóa",
+    title: <>Sự <GlossaryWord id="alienation">Tha Hóa</GlossaryWord></>,
     date: "Bước 4",
     content: "Người dùng phụ thuộc vào nền tảng. Nhà bán hàng bị ép giá. Shipper vắt kiệt sức lao động. Nền tảng thu lợi lớn nhất.",
     category: "Marx",
@@ -80,7 +81,7 @@ export const DialecticLoopSection: React.FC = () => {
         
         setScrollProgress(progress);
         
-        let newIndex = 0;
+        let newIndex;
         // Điểm ở đỉnh tương ứng với các mức progress: 0, 0.25, 0.5, 0.75, 1.0
         // Ta chia khoảng để Node gần đỉnh nhất sẽ active
         if (progress < 0.125) newIndex = 0;
@@ -127,7 +128,7 @@ export const DialecticLoopSection: React.FC = () => {
   const activeItem = timelineData[activeIndex];
 
   return (
-    <section ref={containerRef} className="w-full h-screen bg-transparent flex flex-col items-center justify-center overflow-hidden relative z-20">
+    <section ref={containerRef} className="w-full h-screen bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/10 via-black to-black flex flex-col items-center justify-center overflow-hidden relative z-20">
       
       <div className="absolute top-16 left-0 right-0 z-50 text-center pointer-events-none">
         <TitleReveal>
