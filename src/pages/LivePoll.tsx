@@ -138,7 +138,9 @@ const PresenterScreen: React.FC = () => {
     try {
       const results: Record<string, number> = {};
       const promises = pollOptions.map(async (opt) => {
-        const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/option_${opt.id}`);
+        const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/option_${opt.id}?t=${Date.now()}`, {
+          cache: 'no-store'
+        });
         const data = await res.json();
         results[opt.id] = data.count || 0;
       });
