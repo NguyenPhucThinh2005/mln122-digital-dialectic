@@ -67,7 +67,7 @@ export const PhilosophySection: React.FC = () => {
       });
 
       // 0. Ảnh Adam Smith mặc định bao phủ toàn bộ vùng PhilosophySection
-      // Không cần clip-path ẩn đi nữa, vì nó sẽ tự trượt đè lên Hero
+      // Không dùng clip-path vì đã trượt đè lên (Overlap Wipe)
       gsap.set(heroImageRef.current, { 
         clipPath: 'none',
         scale: 1,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Factory, ShoppingCart, Share2, Landmark } from 'lucide-react';
 
 const participants = [
@@ -33,12 +33,43 @@ const participants = [
 ];
 
 import { TitleReveal } from './TitleReveal';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Section1: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const container = useRef<HTMLDivElement>(null);
+  const currentIndexRef = useRef(0);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: container.current,
+      start: "top top",
+      end: "+=150%", // Đóng băng và cuộn thêm 150% chiều cao màn hình
+      pin: true,
+      scrub: true,
+      onUpdate: (self) => {
+        // Chia quá trình cuộn thành 4 phần đều nhau
+        const progress = self.progress;
+        let newIndex = 0;
+        if (progress < 0.25) newIndex = 0;
+        else if (progress < 0.5) newIndex = 1;
+        else if (progress < 0.75) newIndex = 2;
+        else newIndex = 3;
+
+        if (newIndex !== currentIndexRef.current) {
+          currentIndexRef.current = newIndex;
+          setActiveIndex(newIndex);
+        }
+      }
+    });
+  }, { scope: container });
 
   return (
-    <section className="w-full min-h-screen bg-[#050505] rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] py-32 px-6 flex flex-col justify-center relative z-20 mt-[-2rem]">
+    <section ref={container} className="w-full min-h-screen bg-transparent py-32 px-6 flex flex-col justify-center relative z-20">
       <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12">
         
         {/* Left Side: Text Content */}
