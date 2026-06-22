@@ -41,7 +41,7 @@ const VoterScreen: React.FC = () => {
     try {
       // Gửi request API tăng count cho từng option được chọn
       const promises = selectedOptions.map(id => 
-        fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/option_${id}/up`)
+        fetch(`https://countapi.mileshilliard.com/api/v1/hit/${NAMESPACE}_option_${id}`)
       );
       await Promise.all(promises);
       setStatus('success');
@@ -138,16 +138,15 @@ const PresenterScreen: React.FC = () => {
     try {
       const results: Record<string, number> = {};
       const promises = pollOptions.map(async (opt) => {
-        const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/option_${opt.id}?t=${Date.now()}`, {
-          cache: 'no-store'
-        });
+        const res = await fetch(`https://countapi.mileshilliard.com/api/v1/get/${NAMESPACE}_option_${opt.id}?t=${Date.now()}`);
         const data = await res.json();
-        results[opt.id] = data.count || 0;
+        results[opt.id] = data.value || 0;
       });
       await Promise.all(promises);
       setVotes(results);
     } catch (e) {
       console.error("Lỗi khi lấy dữ liệu bình chọn:", e);
+      setVotes({ error: 1, message: String(e) } as any);
     }
   };
 
