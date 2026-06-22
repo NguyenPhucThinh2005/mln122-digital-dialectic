@@ -86,30 +86,42 @@ export const Section2: React.FC = () => {
         {/* Right Side: Scrolling Visuals */}
         <div className="w-full md:w-1/2 pt-[20vh] md:pt-[50vh] pb-[50vh] flex flex-col gap-[30vh]" ref={rightVisuals}>
           
-          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center">
+          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center group">
             <Smartphone className="w-24 h-24 text-orange-400 mb-6" />
             <h3 className="text-2xl font-bold mb-2 text-white">App / Nền tảng lõi</h3>
-            <p className="text-stone-300">Hạ tầng công nghệ xóa nhòa khoảng cách địa lý.</p>
-            <div className="mt-8 px-4 py-2 bg-white/5 text-stone-400 rounded-lg text-sm border border-dashed border-white/20">
-              [Placeholder: Ảnh UI Shopee App]
+            <p className="text-stone-300 mb-6">Hạ tầng công nghệ xóa nhòa khoảng cách địa lý.</p>
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 relative">
+              <img 
+                src="/images/shopee_app_ui.jpg" 
+                alt="Giao diện App Shopee" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
             </div>
           </div>
 
-          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center">
+          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center group">
             <Store className="w-24 h-24 text-blue-400 mb-6" />
             <h3 className="text-2xl font-bold mb-2 text-white">Gian hàng & Dịch vụ</h3>
-            <p className="text-stone-300">Kết nối người bán và người mua. Freeship Extra, Mall.</p>
-            <div className="mt-8 px-4 py-2 bg-white/5 text-stone-400 rounded-lg text-sm border border-dashed border-white/20">
-              [Placeholder: Ảnh UI Gian hàng]
+            <p className="text-stone-300 mb-6">Kết nối người bán và người mua. Freeship Extra, Mall.</p>
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 relative">
+              <img 
+                src="/images/shopee_merchant_ui.jpg" 
+                alt="Giao diện gian hàng người bán" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
             </div>
           </div>
 
-          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center">
+          <div className="visual-card w-full aspect-square bg-black/40 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 p-8 flex flex-col items-center justify-center text-center group">
             <Banknote className="w-24 h-24 text-emerald-400 mb-6" />
             <h3 className="text-2xl font-bold mb-2 text-white">Doanh thu chủ thể</h3>
-            <p className="text-stone-300">Thu phí sàn, đấu thầu từ khóa, bán vị trí hiển thị.</p>
-            <div className="mt-8 px-4 py-2 bg-white/5 text-stone-400 rounded-lg text-sm border border-dashed border-white/20">
-              [Placeholder: Ảnh Tiền / Quảng cáo]
+            <p className="text-stone-300 mb-6">Thu phí sàn, đấu thầu từ khóa, bán vị trí hiển thị.</p>
+            <div className="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 relative">
+              <img 
+                src="/images/shopee_revenue_ads.jpg" 
+                alt="Quảng cáo và doanh thu" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
             </div>
           </div>
 
