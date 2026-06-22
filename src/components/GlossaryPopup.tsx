@@ -11,6 +11,7 @@ export const GlossaryPopup: React.FC = () => {
   // Hiệu ứng mở/đóng bằng GSAP
   useEffect(() => {
     if (activeWord) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(true);
       gsap.fromTo(popupRef.current, 
         { opacity: 0, scale: 0.8, y: 20 },
@@ -28,7 +29,7 @@ export const GlossaryPopup: React.FC = () => {
         });
       }
     }
-  }, [activeWord]);
+  }, [activeWord, isVisible]);
 
   // Click ra ngoài để đóng
   useEffect(() => {
