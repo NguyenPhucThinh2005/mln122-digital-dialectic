@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Home, BarChart2, Gamepad2 } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -48,20 +48,13 @@ const NavItem: React.FC<NavItemProps> = ({
 export const FloatingNavbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const navItems = [
     { icon: Home, label: 'Trang Chủ', path: '/' },
     { icon: BarChart2, label: 'Live Poll', path: '/poll' },
     { icon: Gamepad2, label: 'Thử Thách', path: '/quiz' },
   ];
 
-  useEffect(() => {
-    const index = navItems.findIndex(item => item.path === location.pathname);
-    if (index !== -1) {
-      setActiveIndex(index);
-    }
-  }, [location.pathname]);
+  const activeIndex = Math.max(0, navItems.findIndex(item => item.path === location.pathname));
 
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[999]">

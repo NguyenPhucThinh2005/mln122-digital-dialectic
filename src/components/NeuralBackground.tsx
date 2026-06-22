@@ -37,7 +37,7 @@ export const NeuralBackground: React.FC<NeuralBackgroundProps> = ({
     let height = container.clientHeight;
     let particles: Particle[] = [];
     let animationFrameId: number;
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
 
     // --- PARTICLE CLASS ---
     class Particle {

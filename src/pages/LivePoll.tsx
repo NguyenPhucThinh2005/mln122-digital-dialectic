@@ -126,11 +126,14 @@ const PresenterScreen: React.FC = () => {
   const barsRef = useRef<(HTMLDivElement | null)[]>([]);
   const countsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const [voteLink, setVoteLink] = useState('');
+  
+  const voteLink = typeof window !== 'undefined' ? `${window.location.origin}/poll?mode=vote` : '';
+
+  function stopPolling() {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  }
 
   useEffect(() => {
-    // Đảm bảo tạo QR code đúng theo domain hiện tại đang deploy
-    setVoteLink(`${window.location.origin}/poll?mode=vote`);
     return () => stopPolling();
   }, []);
 
@@ -146,7 +149,6 @@ const PresenterScreen: React.FC = () => {
       setVotes(results);
     } catch (e) {
       console.error("Lỗi khi lấy dữ liệu bình chọn:", e);
-      setVotes({ error: 1, message: String(e) } as any);
     }
   };
 
@@ -197,10 +199,6 @@ const PresenterScreen: React.FC = () => {
   const handleStop = () => {
     stopPolling();
     setIsFinished(true);
-  };
-
-  const stopPolling = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
